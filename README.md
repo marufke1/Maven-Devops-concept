@@ -11,3 +11,10 @@ Navigate to the **/opt/ directory using cd /opt/**, and use **wget to download t
 Enter the Apache Maven directory (e.g., **cd /apache-maven-3.9.6**) and explore its contents with ls. Move into the bin/ directory **(cd bin/)** and list its contents **(ls -l).**
 
 Set the **Maven path with export PATH=$PATH:/opt/apache-maven-3.9.6/bin**. Verify the Maven installation by running **mvn -version.**
+
+After successfully installing Maven on the system, we can initiate the build process manually. Using the **git clone command,** we clone the repository from GitHub to our EC2 local machine: **git clone https://github.com/marufke1/CICD-Devops-project.git.** Once the code is cloned, we verify its presence using the **ls -l** command. Navigating into the cloned source code directory **(cd src-code/),** we can confirm the existence of the pom.xml file with **ls -l.**
+
+To perform the build process, we utilize various Maven phases. The first command, **mvn validate,** ensures that all dependencies and prerequisites are available for the build process. The second command, **mvn test,** compiles the source code and creates a target folder in /opt/apache-maven-3.9.6/bin/, which can be verified using ls -l. The third command, **mvn clean,** removes the target folder where the WAR file will be stored. Finally, we execute the **mvn install** command to build the artifact from the source code, generating a WAR file stored within the target folder. Verification can be done with the command **cd target/ ls -l.**
+
+Occasionally, modifications may be made to the pom.xml file, such as updating the version. In such cases, running mvn clean removes the old WAR file with the previous version. Subsequently, executing mvn install reinstalls the WAR file with the updated version mentioned in the pom.xml file, which is then stored in the target folder."
+
